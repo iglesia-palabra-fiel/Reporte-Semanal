@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reporte Semanal Ministerio-PF</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f5f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .contenedor {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 3px 10px #bbb;
+    }
+
+    h1 {
+      text-align: center;
+      color: #174a7e;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      box-sizing: border-box;
+      border: 1px solid #bbb;
+      border-radius: 8px;
+    }
+
+    textarea {
+      height: 100px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px;
+      background: #174a7e;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0e355c;
+    }
+
+    #mensaje {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="contenedor">
+
+    <h1>Reporte Semanal Ministerio-PF</h1>
+
+    <label>Nombre</label>
+    <input type="text" id="nombre" placeholder="Escribe tu nombre">
+
+    <label>Semana</label>
+    <input type="text" id="semana" placeholder="Ejemplo: 16 al 22 de septiembre">
+
+    <label>Actividad realizada</label>
+    <textarea id="actividad" placeholder="Describe la actividad realizada"></textarea>
+
+    <label>Observaciones</label>
+    <textarea id="observaciones" placeholder="Escribe las observaciones"></textarea>
+
+    <button onclick="guardarReporte()">Guardar reporte</button>
+
+    <p id="mensaje"></p>
+
+  </div>
+
+  <script>
+    function guardarReporte() {
+
+      const nombre = document.getElementById("nombre").value;
+      const semana = document.getElementById("semana").value;
+      const actividad = document.getElementById("actividad").value;
+      const observaciones = document.getElementById("observaciones").value;
+
+      if (!nombre || !semana || !actividad) {
+        document.getElementById("mensaje").innerText =
+          "Por favor completa los campos obligatorios.";
+        return;
+      }
+
+      localStorage.setItem("nombre", nombre);
+      localStorage.setItem("semana", semana);
+      localStorage.setItem("actividad", actividad);
+      localStorage.setItem("observaciones", observaciones);
+
+      document.getElementById("mensaje").innerText =
+        "¡Reporte guardado correctamente!";
+
+    }
+  </script>
+
+</body>
+</html>
